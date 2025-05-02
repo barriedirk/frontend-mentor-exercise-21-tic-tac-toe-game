@@ -1,0 +1,76 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100dvh;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+picture,
+img,
+svg,
+canvas,
+video,
+object {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  fill: currentColor;
+}
+
+button {
+  cursor: pointer;
+  cursor: none;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap-style: pretty;
+  max-width: 66ch;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+fieldset {
+  border: none;
+}
