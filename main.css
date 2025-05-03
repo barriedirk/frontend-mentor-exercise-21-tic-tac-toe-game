@@ -1,0 +1,159 @@
+:root {
+  --ff: "Outfit", sans-serif;
+
+  --fw-thin: 100;
+  --fw-extralight: 200;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  --clr-dark-navy: #1d2a32;
+  --clr-semi-dark-navy: #243640;
+
+  --clr-light-blue: #31c3bd;
+  --clr-light-blue-hover: #65e9e4;
+
+  --clr-light-yellow: #f2b137;
+  --clr-light-yellow-hover: #ffc860;
+
+  --clr-silver: #a8bfc9;
+  --clr-silver-hover: #dbe8ed;
+
+  --box-shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--ff);
+  font-size: 1.5;
+  background-color: var(--clr-dark-navy);
+  color: var(--clr-silver);
+  font-size: 1.4rem;
+}
+
+.tic-tac-toe {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+/* new game ------------------*/
+
+.new-game {
+  max-width: 32.7rem;
+  width: 100%;
+}
+
+.new-game__header img {
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  margin: 0.5rem;
+}
+
+.new-game__pick-player {
+  border-radius: 15px;
+  background-color: var(--clr-semi-dark-navy);
+  padding: 3rem 2.8rem;
+  gap: 2rem;
+  margin-top: 3rem;
+  box-shadow: inset 0 -0.8rem 0 #10212a;
+}
+
+.new-game__pick-player-title {
+  font-size: 1.6rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 1px;
+}
+
+.new-game__pick-player-description {
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.88px;
+}
+
+.new-game__pick-player-option {
+  border-radius: 15px;
+  background-color: var(--clr-dark-navy);
+  padding: 1rem;
+  width: 100%;
+}
+
+.new-game__pick-player-option--label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.new-game__pick-player-option--label input {
+  display: none;
+}
+
+.new-game__pick-player-option--label span {
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.new-game__pick-player-option--label input:checked ~ span {
+  background-color: var(--clr-silver);
+}
+
+.new-game__pick-player-option--label input ~ span path {
+  fill: var(--clr-silver);
+}
+
+.new-game__pick-player-option--label input:checked ~ span path {
+  fill: var(--clr-dark-navy);
+}
+
+.new-game__pick-player-option--label .option-icon {
+  width: 3.174rem;
+  aspect-ratio: 1 / 1;
+}
+
+.new-game__choice {
+  margin-top: 3rem;
+}
+
+.new-game__choice--button-player,
+.new-game__choice--button-cpu {
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  font-weight: var(--fw-bold);
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 15px;
+  padding: 1rem 1rem 1.8rem;
+  color: var(--clr-dark-navy);
+  border: none;
+}
+
+.new-game__choice--button-cpu {
+  background-color: var(--clr-light-yellow);
+  box-shadow: inset 0 -0.8rem 0 #cc8b13;
+}
+
+.new-game__choice--button-player {
+  background-color: var(--clr-light-blue);
+  box-shadow: inset 0 -0.8rem 0 #118c87;
+}
+
+/* new game ------------------*/
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

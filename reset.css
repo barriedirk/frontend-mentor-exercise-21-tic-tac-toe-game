@@ -35,7 +35,6 @@ svg {
 
 button {
   cursor: pointer;
-  cursor: none;
 }
 
 button[disabled] {

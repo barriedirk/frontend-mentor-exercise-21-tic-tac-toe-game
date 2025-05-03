@@ -1,0 +1,40 @@
+    <main>
+      <!-- New game menu start -->
+
+      <span>Pick player 1's mark</span>
+      <span>Remember: X goes first</span>
+
+      New Game (vs CPU)<br />
+      New Game (vs player)<br />
+
+      <!-- New game menu end -->
+
+      <!-- Game board start -->
+
+      <!-- x/o icon -->
+      turn<br />
+
+      X (You)
+      <!-- Your score --><br />
+      Ties
+      <!-- Ties score --><br />
+      X (CPU)
+      <!-- CPU score --><br />
+
+      Oh no, you lost<br />
+      You won!<br />
+      Player
+      <!-- 1/2 -->
+      wins!<br />
+
+      <!-- x/o icon -->
+      takes the round<br />
+      Round tied<br />
+      Restart game?<br />
+
+      Quit<br />
+      Next round<br />
+      No, cancel<br />
+      Yes, restart<br />
+
+      <!-- Game board end --><br />

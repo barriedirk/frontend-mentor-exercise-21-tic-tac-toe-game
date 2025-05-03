@@ -1,47 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tic Tac Toe</title>
-</head>
-<body>
+    <meta name="author" content="Barrie Freyre" />
 
-  <!-- New game menu start -->
+    <meta name="linkedin" content="https://www.linkedin.com/in/barriefreyre/" />
+    <meta name="github" content="https://github.com/barriedirk" />
+    <meta
+      name="frontendmentor"
+      content="https://www.frontendmentor.io/profile/barriedirk"
+    />
 
-  Pick player 1's mark
-  Remember: X goes first
+    <link rel="me" href="https://www.linkedin.com/in/barriefreyre/" />
+    <link rel="me" href="https://github.com/barriedirk" />
+    <link rel="me" href="https://www.frontendmentor.io/profile/barriedirk" />
 
-  New Game (vs CPU)
-  New Game (vs player)
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Barrie Freyre",
+        "url": "",
+        "sameAs": [
+          "https://www.linkedin.com/in/barriefreyre/",
+          "https://github.com/barriedirk",
+          "https://www.frontendmentor.io/profile/barriedirk"
+        ]
+      }
+    </script>
 
-  <!-- New game menu end -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Game board start -->
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./main.css" />
 
-  <!-- x/o icon --> turn
+    <script type="module" src="./main.js"></script>
 
-  X (You) <!-- Your score -->
-  Ties <!-- Ties score -->
-  X (CPU) <!-- CPU score -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
 
-  Oh no, you lost
-  You won!
-  Player <!-- 1/2 --> wins!
-
-  <!-- x/o icon --> takes the round
-  Round tied
-  Restart game?
-
-  Quit
-  Next round
-  No, cancel
-  Yes, restart
-
-  <!-- Game board end -->
-
-</body>
+    <title>Frontend Mentor | Tic Tac Toe</title>
+  </head>
+  <body class="flex-column-center">
+    <main id="root" class="tic-tac-toe flex-column-center">
+      <section class="new-game">
+        <header class="new-game__header flex-row-center">
+          <img src="./assets/icon-x.svg" alt="X icon" />
+          <img src="./assets/icon-o.svg" alt="O icon" />
+        </header>
+        <div class="new-game__pick-player flex-column-center">
+          <h2 class="new-game__pick-player-title">PICK PLAYER 1’S MARK</h2>
+          <form class="new-game__pick-player-option flex-row-center">
+            <label
+              for="player-option-x"
+              class="new-game__pick-player-option--label"
+            >
+              <input
+                type="radio"
+                value="x"
+                id="player-option-x"
+                name="player-option"
+                checked
+              />
+              <span class="flex-row-center">
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 64 64"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="option-icon"
+                >
+                  <path
+                    d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                    fill="#31C3BD"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </span>
+            </label>
+            <label
+              for="player-option-o"
+              class="new-game__pick-player-option--label"
+            >
+              <input
+                type="radio"
+                value="o"
+                id="player-option-o"
+                name="player-option"
+              />
+              <span class="flex-row-center">
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 64 64"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="option-icon"
+                >
+                  <path
+                    d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+                    fill="#F2B137"
+                  ></path>
+                </svg>
+              </span>
+            </label>
+          </form>
+          <p class="new-game__pick-player-description">
+            REMEMBER : X GOES FIRST
+          </p>
+        </div>
+        <footer class="new-game__choice flex-column-center">
+          <button
+            class="new-game__choice--button-cpu"
+            type="button"
+            id="new-game__choice-button"
+            data-vs="cpu"
+          >
+            NEW GAME (VS CPU)
+          </button>
+          <button
+            class="new-game__choice--button-player"
+            type="button"
+            data-vs="player"
+          >
+            NEW GAME (VS PLAYER)
+          </button>
+        </footer>
+      </section>
+    </main>
+  </body>
 </html>
