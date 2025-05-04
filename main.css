@@ -26,6 +26,62 @@
   --box-shadow-color: rgba(0, 0, 0, 0.4);
 }
 
+/* = Helpers ------------------*/
+.button {
+  font-weight: var(--fw-bold);
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 15px;
+  padding: 1rem 1rem 1.8rem;
+  color: var(--clr-dark-navy);
+  border: none;
+}
+
+.button--color-orange {
+  background-color: var(--clr-light-yellow);
+  box-shadow: inset 0 -0.8rem 0 #cc8b13;
+}
+
+.button--color-blue {
+  background-color: var(--clr-light-blue);
+  box-shadow: inset 0 -0.8rem 0 #118c87;
+}
+
+.bck-semi-dark-navy {
+  border-radius: 15px;
+  background-color: var(--clr-semi-dark-navy);
+  padding: 1rem;
+  box-shadow: inset 0 -0.8rem 0 #10212a;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* = Basic --------- */
+
 html {
   font-size: 62.5%;
 }
@@ -58,12 +114,9 @@ body {
 }
 
 .new-game__pick-player {
-  border-radius: 15px;
-  background-color: var(--clr-semi-dark-navy);
-  padding: 3rem 2.8rem;
-  gap: 2rem;
   margin-top: 3rem;
-  box-shadow: inset 0 -0.8rem 0 #10212a;
+  gap: 2rem;
+  padding: 3rem 2.8rem;
 }
 
 .new-game__pick-player-title {
@@ -119,41 +172,23 @@ body {
   margin-top: 3rem;
 }
 
-.new-game__choice--button-player,
-.new-game__choice--button-cpu {
+.new-game__choice--button-cpu,
+.new-game__choice--button-player {
   letter-spacing: 1px;
   font-size: 1.6rem;
-  font-weight: var(--fw-bold);
-  width: 100%;
-  margin: 1rem 0;
-  border-radius: 15px;
-  padding: 1rem 1rem 1.8rem;
-  color: var(--clr-dark-navy);
-  border: none;
-}
-
-.new-game__choice--button-cpu {
-  background-color: var(--clr-light-yellow);
-  box-shadow: inset 0 -0.8rem 0 #cc8b13;
-}
-
-.new-game__choice--button-player {
-  background-color: var(--clr-light-blue);
-  box-shadow: inset 0 -0.8rem 0 #118c87;
 }
 
 /* new game ------------------*/
 
-.flex-column-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* =media queries -----*/
+@media only screen and (min-width: 48em) {
+  .new-game {
+    max-width: 46rem;
+  }
 
-.flex-row-center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  .new-game__choice--button-cpu,
+  .new-game__choice--button-player {
+    font-size: 2rem;
+    letter-spacing: 1.25px;
+  }
 }

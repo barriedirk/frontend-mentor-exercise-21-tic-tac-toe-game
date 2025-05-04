@@ -54,12 +54,15 @@
   </head>
   <body class="flex-column-center">
     <main id="root" class="tic-tac-toe flex-column-center">
+      <h1 class="visually-hidden">Tic Tac Toe Game</h1>
       <section class="new-game">
         <header class="new-game__header flex-row-center">
           <img src="./assets/icon-x.svg" alt="X icon" />
           <img src="./assets/icon-o.svg" alt="O icon" />
         </header>
-        <div class="new-game__pick-player flex-column-center">
+        <div
+          class="new-game__pick-player bck-semi-dark-navy flex-column-center"
+        >
           <h2 class="new-game__pick-player-title">PICK PLAYER 1’S MARK</h2>
           <form class="new-game__pick-player-option flex-row-center">
             <label
@@ -121,7 +124,7 @@
         </div>
         <footer class="new-game__choice flex-column-center">
           <button
-            class="new-game__choice--button-cpu"
+            class="new-game__choice--button-cpu button button--color-orange"
             type="button"
             id="new-game__choice-button"
             data-vs="cpu"
@@ -129,7 +132,7 @@
             NEW GAME (VS CPU)
           </button>
           <button
-            class="new-game__choice--button-player"
+            class="new-game__choice--button-player button button--color-blue"
             type="button"
             data-vs="player"
           >
