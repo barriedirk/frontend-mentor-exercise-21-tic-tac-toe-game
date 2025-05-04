@@ -47,6 +47,11 @@
   box-shadow: inset 0 -0.8rem 0 #118c87;
 }
 
+.button--color-silver {
+  background-color: var(--clr-silver);
+  box-shadow: inset 0 -0.8rem 0 #6b8997;
+}
+
 .bck-semi-dark-navy {
   border-radius: 15px;
   background-color: var(--clr-semi-dark-navy);
@@ -100,11 +105,19 @@ body {
   padding-right: 2rem;
 }
 
+#root {
+  width: 100%;
+}
+
 /* new game ------------------*/
 
 .new-game {
   max-width: 32.7rem;
   width: 100%;
+}
+
+.new-game__header {
+  margin-bottom: 6.4rem;
 }
 
 .new-game__header img {
@@ -178,9 +191,108 @@ body {
   font-size: 1.6rem;
 }
 
-/* new game ------------------*/
+/* =Game ------------------*/
 
-/* =media queries -----*/
+.game {
+  max-width: 32.7rem;
+  width: 100%;
+}
+
+.game__header {
+  justify-content: space-between;
+  margin-bottom: 6.4rem;
+}
+
+.game__header-symbols,
+.game__header-turn {
+  gap: 1rem;
+}
+
+.game__header-symbols img {
+  width: 3.2rem;
+  aspect-ratio: 1 / 1;
+}
+
+.game__header-turn--who-plays {
+  width: 1.6rem;
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.game__header-turn {
+  border-radius: 5px;
+  padding: 1rem 1rem 1.5rem;
+  box-shadow: inset 0 -0.5rem 0 #10212a;
+}
+
+.game__header-turn--x {
+  background-image: url("./assets/icon-x.svg");
+}
+
+.game__header-turn--o {
+  background-image: url("./assets/icon-o.svg");
+}
+
+.game__header-turn--label {
+  font-size: 1.4rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.88px;
+  color: var(--clr-silver);
+}
+
+.game__header-restart--button {
+  box-shadow: inset 0 -0.4rem 0 #6b8997;
+  padding: 1rem 1rem 1.4rem;
+  border-radius: 5px;
+}
+.game__header-restart--button img {
+  width: 1.538rem;
+  aspect-ratio: 1 / 1;
+}
+
+.game__plays {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.game__plays--cell {
+  height: 9.6rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 1rem;
+}
+
+.game__scores {
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.game__score--display {
+  border-radius: 1rem;
+  width: 9.6rem;
+  padding: 1.5rem;
+  box-shadow: none;
+}
+
+.game__score--title {
+  font-size: 1.4rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.88px;
+  line-height: 1;
+}
+
+.game__score--score {
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 1.25px;
+  line-height: 1;
+}
+
+/* =Media Queries -----*/
+
 @media only screen and (min-width: 48em) {
   .new-game {
     max-width: 46rem;

@@ -53,93 +53,227 @@
     <title>Frontend Mentor | Tic Tac Toe</title>
   </head>
   <body class="flex-column-center">
-    <main id="root" class="tic-tac-toe flex-column-center">
+    <main class="tic-tac-toe flex-column-center">
       <h1 class="visually-hidden">Tic Tac Toe Game</h1>
-      <section class="new-game">
-        <header class="new-game__header flex-row-center">
-          <img src="./assets/icon-x.svg" alt="X icon" />
-          <img src="./assets/icon-o.svg" alt="O icon" />
-        </header>
-        <div
-          class="new-game__pick-player bck-semi-dark-navy flex-column-center"
+      <div id="root" class="flex-column-center">
+        <section class="game">
+          <header class="game__header flex-row-center">
+            <div
+              class="game__header-symbols flex-row-center"
+              aria-hidden="true"
+            >
+              <img src="./assets/icon-x.svg" alt="Icon X" />
+              <img src="./assets/icon-o.svg" alt="Icon O" />
+            </div>
+            <div
+              class="game__header-turn flex-row-center bck-semi-dark-navy"
+              role="status"
+              aria-live="polite"
+              aria-label="Current player's turn"
+            >
+              <span
+                class="game__header-turn--who-plays game__header-turn--x"
+                aria-hidden="true"
+              ></span>
+              <span class="game__header-turn--label">TURN</span>
+            </div>
+            <div class="game__header-restart flex-row-center">
+              <button
+                class="game__header-restart--button button button--color-silver"
+                aria-label="Restart game"
+              >
+                <img
+                  src="./assets/icon-restart.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+          </header>
+          <div
+            class="game__plays"
+            role="grid"
+            aria-label="Tic Tac Toe game board"
+          >
+            <button
+              class="game__plays--cell game__plays--cell-1 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 1, Column 1. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-2 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 1, Column 2. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-3 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 1, Column 3. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-4 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 2, Column 1. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-5 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 2, Column 2. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-6 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 2, Column 3. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-7 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 3, Column 1. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-8 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 3, Column 2. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+            <button
+              class="game__plays--cell game__plays--cell-9 bck-semi-dark-navy"
+              role="gridcell"
+              aria-label="Row 3, Column 3. Empty"
+              aria-pressed="false"
+              tabindex="0"
+            ></button>
+          </div>
+          <footer class="game__scores flex-row-center" aria-label="Game scores">
+            <div
+              class="game__score--display game__score--you button button--color-blue flex-column-center"
+              aria-label="Player X score"
+            >
+              <span class="game__score--title">X (YOU)</span>
+              <span class="game__score--score">14</span>
+            </div>
+            <div
+              class="game__score--display game__score--ties button button--color-silver flex-column-center"
+              aria-label="Tie score"
+            >
+              <span class="game__score--title">TIES</span>
+              <span class="game__score--score">14</span>
+            </div>
+            <div
+              class="game__score--display game__score--cpu button button--color-orange flex-column-center"
+              aria-label="Player O score"
+            >
+              <span class="game__score--title">O (CPU)</span>
+              <span class="game__score--score">14</span>
+            </div>
+          </footer>
+        </section>
+
+        <section
+          class="new-game"
+          style="display: none"
+          aria-label="Tic Tac Toe New Game Section"
         >
-          <h2 class="new-game__pick-player-title">PICK PLAYER 1’S MARK</h2>
-          <form class="new-game__pick-player-option flex-row-center">
-            <label
-              for="player-option-x"
-              class="new-game__pick-player-option--label"
-            >
-              <input
-                type="radio"
-                value="x"
-                id="player-option-x"
-                name="player-option"
-                checked
-              />
-              <span class="flex-row-center">
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 64 64"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="option-icon"
-                >
-                  <path
-                    d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
-                    fill="#31C3BD"
-                    fill-rule="evenodd"
-                  ></path>
-                </svg>
-              </span>
-            </label>
-            <label
-              for="player-option-o"
-              class="new-game__pick-player-option--label"
-            >
-              <input
-                type="radio"
-                value="o"
-                id="player-option-o"
-                name="player-option"
-              />
-              <span class="flex-row-center">
-                <svg
-                  width="100%"
-                  height="100%"
-                  viewBox="0 0 64 64"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="option-icon"
-                >
-                  <path
-                    d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
-                    fill="#F2B137"
-                  ></path>
-                </svg>
-              </span>
-            </label>
-          </form>
-          <p class="new-game__pick-player-description">
-            REMEMBER : X GOES FIRST
-          </p>
-        </div>
-        <footer class="new-game__choice flex-column-center">
-          <button
-            class="new-game__choice--button-cpu button button--color-orange"
-            type="button"
-            id="new-game__choice-button"
-            data-vs="cpu"
+          <header class="new-game__header flex-row-center" aria-hidden="true">
+            <img src="./assets/icon-x.svg" alt="X icon" />
+            <img src="./assets/icon-o.svg" alt="O icon" />
+          </header>
+          <div
+            class="new-game__pick-player bck-semi-dark-navy flex-column-center"
           >
-            NEW GAME (VS CPU)
-          </button>
-          <button
-            class="new-game__choice--button-player button button--color-blue"
-            type="button"
-            data-vs="player"
-          >
-            NEW GAME (VS PLAYER)
-          </button>
-        </footer>
-      </section>
+            <h2 class="new-game__pick-player-title">PICK PLAYER 1’S MARK</h2>
+            <form class="new-game__pick-player-option flex-row-center">
+              <label
+                for="player-option-x"
+                class="new-game__pick-player-option--label"
+              >
+                <input
+                  type="radio"
+                  value="x"
+                  id="player-option-x"
+                  name="player-option"
+                  checked
+                />
+                <span class="flex-row-center">
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 64 64"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="option-icon"
+                  >
+                    <path
+                      d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                      fill="#31C3BD"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </span>
+              </label>
+              <label
+                for="player-option-o"
+                class="new-game__pick-player-option--label"
+              >
+                <input
+                  type="radio"
+                  value="o"
+                  id="player-option-o"
+                  name="player-option"
+                />
+                <span class="flex-row-center">
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 64 64"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="option-icon"
+                  >
+                    <path
+                      d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+                      fill="#F2B137"
+                    ></path>
+                  </svg>
+                </span>
+              </label>
+            </form>
+            <p class="new-game__pick-player-description">
+              REMEMBER : X GOES FIRST
+            </p>
+          </div>
+          <footer class="new-game__choice flex-column-center">
+            <button
+              class="new-game__choice--button-cpu button button--color-orange"
+              type="button"
+              id="new-game__choice-button"
+              data-vs="cpu"
+            >
+              NEW GAME (VS CPU)
+            </button>
+            <button
+              class="new-game__choice--button-player button button--color-blue"
+              type="button"
+              data-vs="player"
+            >
+              NEW GAME (VS PLAYER)
+            </button>
+          </footer>
+        </section>
+      </div>
     </main>
   </body>
 </html>
