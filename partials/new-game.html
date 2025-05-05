@@ -1,0 +1,77 @@
+<section class="new-game" aria-label="Tic Tac Toe New Game Section">
+  <header class="new-game__header flex-row-center" aria-hidden="true">
+    <img src="./assets/icon-x.svg" alt="X icon" />
+    <img src="./assets/icon-o.svg" alt="O icon" />
+  </header>
+  <div class="new-game__pick-player bck-semi-dark-navy flex-column-center">
+    <h2 class="new-game__pick-player-title">PICK PLAYER 1’S MARK</h2>
+    <form class="new-game__pick-player-option flex-row-center">
+      <label for="player-option-x" class="new-game__pick-player-option--label">
+        <input
+          type="radio"
+          value="x"
+          id="player-option-x"
+          name="player-option"
+          class="player-option--radio-mark"
+          checked
+        />
+        <span class="flex-row-center">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.org/2000/svg"
+            class="option-icon"
+          >
+            <path
+              d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+              fill="#31C3BD"
+              fill-rule="evenodd"
+            ></path>
+          </svg>
+        </span>
+      </label>
+      <label for="player-option-o" class="new-game__pick-player-option--label">
+        <input
+          type="radio"
+          value="o"
+          id="player-option-o"
+          name="player-option"
+          class="player-option--radio-mark"
+        />
+        <span class="flex-row-center">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 64 64"
+            xmlns="http://www.w3.org/2000/svg"
+            class="option-icon"
+          >
+            <path
+              d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+              fill="#F2B137"
+            ></path>
+          </svg>
+        </span>
+      </label>
+    </form>
+    <p class="new-game__pick-player-description">REMEMBER : X GOES FIRST</p>
+  </div>
+  <footer class="new-game__choice flex-column-center">
+    <button
+      class="new-game__choice--button-cpu button button--color-orange"
+      type="button"
+      id="new-game__choice-button"
+      data-vs="cpu"
+    >
+      NEW GAME (VS CPU)
+    </button>
+    <button
+      class="new-game__choice--button-player button button--color-blue"
+      type="button"
+      data-vs="player"
+    >
+      NEW GAME (VS PLAYER)
+    </button>
+  </footer>
+</section>

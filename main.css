@@ -279,11 +279,13 @@ body {
 
 .game__plays .game__plays--button.play-x {
   pointer-events: none;
+  cursor: not-allowed;
   background-image: url("./assets/icon-x.svg");
 }
 
 .game__plays .game__plays--button.play-o {
   pointer-events: none;
+  cursor: not-allowed;
   background-image: url("./assets/icon-o.svg");
 }
 
