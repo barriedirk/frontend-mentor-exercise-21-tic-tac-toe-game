@@ -31,6 +31,13 @@
       }
     </script>
 
+    <!-- dialog-polyfill from Google. To mimics native -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dialog-polyfill@0.5.6/dist/dialog-polyfill.css"
+    />
+    <script src="https://unpkg.com/dialog-polyfill@0.5.6/dist/dialog-polyfill.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -275,5 +282,9 @@
         </section>
       </div>
     </main>
+
+    <dialog id="modal-dialog" class="modal-dialog">
+      <p>Lorem Ipsum</p>
+    </dialog>
   </body>
 </html>

@@ -314,6 +314,29 @@ body {
   line-height: 1;
 }
 
+/* =Dialog ---------*/
+
+dialog.modal-dialog {
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+
+  text-align: center;
+  position: fixed;
+  z-index: 9999;
+
+  width: 100%;
+  max-width: 620px;
+  height: 100%;
+  max-height: 750px;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* =Media Queries -----*/
 
 @media only screen and (min-width: 48em) {
