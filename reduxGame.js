@@ -27,12 +27,23 @@ export const ScreenType = Object.freeze({
   NEW_GAME: "NEW_GAME",
 });
 
-export const CartActionType = Object.freeze({
+export const GameActionType = Object.freeze({
   CLEAR_GAME: "CLEAR_GAME",
   SET_GAME: "SET_GAME",
   CHANGE_SCREEN: "CHANGE_SCREEN",
   UPDATE_SCREEN: "UPDATE_SCREEN",
+  INIT: "@@INIT",
 });
+
+const initialGameState = {
+  turn: "",
+  board: ["", "", "", "", "", "", "", "", ""],
+  score: {
+    you: 0,
+    ties: 0,
+    rival: 0,
+  },
+};
 
 const initialState = {
   game: {
@@ -42,18 +53,21 @@ const initialState = {
   },
   prevScreen: "",
   screen: "",
-  board: {},
+  game: initialGameState,
 };
 
 export const gameReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CartActionType.CLEAR_GAME: {
-      return structuredClone(initialState);
+    case GameActionType.CLEAR_GAME: {
+      const newState = structuredClone(state);
+      const { prevScreen, screen } = action?.payload ?? {};
+
+      return { ...newState, prevScreen, screen };
     }
 
-    case CartActionType.CHANGE_SCREEN: {
+    case GameActionType.CHANGE_SCREEN: {
       let newState = structuredClone(state);
-      const { playerMark, vs, iaDifficult, screen } = action.payload;
+      const { playerMark, vs, iaDifficult, screen, game } = action.payload;
 
       return {
         ...newState,
@@ -64,10 +78,11 @@ export const gameReducer = (state = initialState, action) => {
         },
         screen,
         prevScreen: "",
+        game,
       };
     }
 
-    case CartActionType.UPDATE_SCREEN: {
+    case GameActionType.UPDATE_SCREEN: {
       let newState = structuredClone(state);
       let { screen } = action.payload;
 
@@ -83,38 +98,49 @@ export const gameReducer = (state = initialState, action) => {
   }
 };
 
-export const clearGameAction = (store) => {
+export const clearGameAction = (store, { prevScreen, screen }) => {
   store.dispatch({
-    type: CartActionType.CLEAR_GAME,
+    type: GameActionType.CLEAR_GAME,
+    payload: {
+      prevScreen: prevScreen ?? "",
+      screen: screen ?? "",
+    },
   });
 };
 
 export const changeToNewGameAction = (store) => {
   store.dispatch({
-    type: CartActionType.CHANGE_SCREEN,
+    type: GameActionType.CHANGE_SCREEN,
     payload: {
       playerMark: "",
       vs: "",
       iaDifficul: "",
       screen: ScreenType.NEW_GAME,
+      game: initialGameState,
     },
   });
 };
 
 export const changeToGameAction = (store, { playerMark, vs, iaDifficul }) => {
   store.dispatch({
-    type: CartActionType.CHANGE_SCREEN,
-    payload: { playerMark, vs, iaDifficul, screen: ScreenType.GAME },
+    type: GameActionType.CHANGE_SCREEN,
+    payload: {
+      playerMark,
+      vs,
+      iaDifficul,
+      screen: ScreenType.GAME,
+      game: initialGameState,
+    },
   });
 };
 
 export const updateScreenGameAction = (store, { screen }) => {
   store.dispatch({
-    type: CartActionType.UPDATE_SCREEN,
+    type: GameActionType.UPDATE_SCREEN,
     payload: { screen },
   });
 };
 
 export const initGameAction = (store) => {
-  store.dispatch({ type: "@@INIT" });
+  store.dispatch({ type: GameActionType.INIT });
 };

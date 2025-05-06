@@ -1,10 +1,9 @@
-import { idRoot } from "./utils.js";
+import { $, idRoot } from "./utils.js";
 import { NewGame } from "./new-game.js";
 import { Game } from "./game.js";
 import {
   createStore,
   gameReducer,
-  updateScreenGameAction,
   initGameAction,
   ScreenType,
 } from "./reduxGame.js";
@@ -12,24 +11,35 @@ import {
 (async () => {
   const store = createStore(gameReducer);
 
-  const renderScreen = () => {
+  const renderScreen = async () => {
     const state = store.getState();
     const { prevScreen, screen } = state;
 
-    if (prevScreen === screen && screen !== "") return;
+    if (screen === "") {
+      await NewGame({ idRoot, store });
 
-    if (screen === ScreenType.NEW_GAME || screen === "") {
-      NewGame({ idRoot, store });
+      return;
+    }
+
+    if (prevScreen === screen) return;
+
+    if (screen === ScreenType.NEW_GAME) {
+      await NewGame({ idRoot, store });
     }
 
     if (screen === ScreenType.GAME) {
-      Game({ idRoot, store });
+      await Game({ idRoot, store });
     }
-
-    updateScreenGameAction(store, { screen: screen ?? ScreenType.NEW_GAME });
   };
 
   store.subscribe(renderScreen);
 
   initGameAction(store);
+
+  const $dialog = $("#modal-dialog");
+
+  // Register polyfill if needed
+  if (!$dialog.showModal) {
+    $dialogPolyfill.registerDialog(dialog);
+  }
 })();

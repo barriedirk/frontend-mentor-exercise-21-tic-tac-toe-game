@@ -1,0 +1,49 @@
+<style>
+  .dialog-restart-game {
+    width: 100%;
+    padding: 5.7rem 2.2rem;
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 1.5px;
+      margin-bottom: 2.6rem;
+    }
+
+    .dialog-restart-game--actions {
+      gap: 2rem;
+
+      button {
+        padding: 1rem;
+        font-size: 1.6rem;
+        font-weight: var(--fw-bold);
+        letter-spacing: 1px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+</style>
+
+<div
+  id="dialog-restart-game"
+  class="dialog-restart-game"
+  aria-labelledby="dialog-restart-game--title"
+>
+  <h2 id="dialog-restart-game--title">RESTART GAME?</h2>
+  <div class="dialog-restart-game--actions flex-row-center">
+    <button
+      class="button button--color-silver"
+      aria-label="No restart game and continue"
+      data-answer="no"
+    >
+      NO, CANCEL
+    </button>
+    <button
+      class="button button--color-orange"
+      aria-label="Yes, restart the game"
+      data-answer="yes"
+    >
+      YES, RESTART
+    </button>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<style>
+  .dialog-select-level {
+    display: flex;
+    flex-direction: column;
+    justify-content: content;
+    align-items: center;
+
+    gap: 2rem;
+    width: 85%;
+  }
+
+  .dialog-select-level--wrapper {
+    color: var(--clr-silver);
+    gap: 2rem;
+    padding: 2rem;
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 1.5px;
+    }
+
+    button {
+      font-size: 1.6rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 1px;
+    }
+  }
+
+  @media screen and (min-width: 48em) {
+    .dialog-select-level {
+      flex-direction: row;
+    }
+  }
+</style>
+
+<div class="dialog-select-level--wrapper flex-column-center">
+  <h2>Select AI's Level</h2>
+  <div class="dialog-select-level">
+    <button
+      class="button button--color-blue select-level--easy"
+      data-level="easy"
+    >
+      EASY
+    </button>
+    <button
+      class="button button--color-silver select-level--medium"
+      data-level="medium"
+    >
+      MEDIUM
+    </button>
+    <button
+      class="button button--color-orange select-level--hard"
+      data-level="hard"
+    >
+      HARD
+    </button>
+  </div>
+</div>

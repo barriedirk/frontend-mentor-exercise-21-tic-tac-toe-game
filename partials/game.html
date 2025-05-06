@@ -5,6 +5,7 @@
       <img src="./assets/icon-o.svg" alt="Icon O" />
     </div>
     <div
+      id="game__header-turn"
       class="game__header-turn flex-row-center bck-semi-dark-navy"
       role="status"
       aria-live="polite"
@@ -18,6 +19,7 @@
     </div>
     <div class="game__header-restart flex-row-center">
       <button
+        id="game__header-restart--button"
         class="game__header-restart--button button button--color-silver"
         aria-label="Restart game"
       >
@@ -31,43 +33,57 @@
       aria-label="Row 1, Column 1. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 1, Column 1</span>
+    </button>
     <button
       class="game__plays--button game__plays--button-2 bck-semi-dark-navy"
       aria-label="Row 1, Column 2. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 1, Column 2</span>
+    </button>
     <button
       class="game__plays--button play-o game__plays--button-3 bck-semi-dark-navy"
       aria-label="Row 1, Column 3. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 1, Column 3</span>
+    </button>
     <button
       class="game__plays--button play-x game__plays--button-4 bck-semi-dark-navy"
       aria-label="Row 2, Column 1. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 2, Column 1</span>
+    </button>
     <button
       class="game__plays--button game__plays--button-5 bck-semi-dark-navy"
       aria-label="Row 2, Column 2. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 2, Column 2</span>
+    </button>
     <button
       class="game__plays--button game__plays--button-6 bck-semi-dark-navy"
       aria-label="Row 2, Column 3. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 2, Column 3</span>
+    </button>
     <button
       class="game__plays--button game__plays--button-7 bck-semi-dark-navy"
       aria-label="Row 3, Column 1. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 3, Column 1</span>
+    </button>
     <button
       class="game__plays--button game__plays--button-8 bck-semi-dark-navy"
       aria-label="Row 3, Column 2. Empty"
@@ -79,23 +95,32 @@
       aria-label="Row 3, Column 3. Empty"
       aria-pressed="false"
       tabindex="0"
-    ></button>
+    >
+      <span class="sr-only">Row 3, Column 3</span>
+    </button>
   </div>
-  <footer class="game__scores flex-row-center" aria-label="Game scores">
+  <footer
+    id="game__scores"
+    class="game__scores flex-row-center"
+    aria-label="Game scores"
+  >
     <div
+      id="game__score--you"
       class="game__score--display game__score--you button button--color-blue flex-column-center"
     >
       <span class="game__score--title">X (YOU)</span>
       <span class="game__score--score">14</span>
     </div>
     <div
+      id="game__score--ties"
       class="game__score--display game__score--ties button button--color-silver flex-column-center"
     >
       <span class="game__score--title">TIES</span>
       <span class="game__score--score">14</span>
     </div>
     <div
-      class="game__score--display game__score--cpu button button--color-orange flex-column-center"
+      id="game__score--rival"
+      class="game__score--display game__score--rival button button--color-orange flex-column-center"
     >
       <span class="game__score--title">O (CPU)</span>
       <span class="game__score--score">14</span>
