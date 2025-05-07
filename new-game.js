@@ -4,6 +4,7 @@ import {
   ScreenType,
   clearGameAction,
   changeToGameAction,
+  updatePrevScreenAction,
 } from "./reduxGame.js";
 import { DialogType, showDialog } from "./showDialog.js";
 
@@ -31,14 +32,16 @@ export async function NewGame({ idRoot, store }) {
         const vs = evt.target.getAttribute("data-vs");
         const playerMark = $("input.player-option--radio-mark:checked").value;
 
-        if (vs === "player") {
-          changeToGameAction(store, { playerMark, vs, difficult: "" });
+        if (vs === "PLAYER") {
+          changeToGameAction(store, { playerMark, vs, aiDifficult: "" });
         } else {
-          const difficult = await showDialog(DialogType.SELECT_DIFFICULT);
+          const aiDifficult = await showDialog(DialogType.SELECT_DIFFICULT);
 
-          changeToGameAction(store, { playerMark, vs, difficult });
+          changeToGameAction(store, { playerMark, vs, aiDifficult });
         }
       });
     }
   );
+
+  updatePrevScreenAction(store);
 }

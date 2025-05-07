@@ -11,10 +11,7 @@
       aria-live="polite"
       aria-label="Current player's turn"
     >
-      <span
-        class="game__header-turn--who-plays game__header-turn--x"
-        aria-hidden="true"
-      ></span>
+      <span class="game__header-turn--who-plays" aria-hidden="true"></span>
       <span class="game__header-turn--label">TURN</span>
     </div>
     <div class="game__header-restart flex-row-center">
@@ -27,7 +24,7 @@
       </button>
     </div>
   </header>
-  <div class="game__plays turn-x" aria-label="Tic Tac Toe game board">
+  <div id="game-plays" class="game__plays" aria-label="Tic Tac Toe game board">
     <button
       class="game__plays--button game__plays--button-1 bck-semi-dark-navy"
       aria-label="Row 1, Column 1. Empty"
@@ -108,22 +105,22 @@
       id="game__score--you"
       class="game__score--display game__score--you button button--color-blue flex-column-center"
     >
-      <span class="game__score--title">X (YOU)</span>
-      <span class="game__score--score">14</span>
+      <span class="game__score--title"></span>
+      <span class="game__score--score"></span>
     </div>
     <div
       id="game__score--ties"
       class="game__score--display game__score--ties button button--color-silver flex-column-center"
     >
       <span class="game__score--title">TIES</span>
-      <span class="game__score--score">14</span>
+      <span class="game__score--score"></span>
     </div>
     <div
       id="game__score--rival"
       class="game__score--display game__score--rival button button--color-orange flex-column-center"
     >
-      <span class="game__score--title">O (CPU)</span>
-      <span class="game__score--score">14</span>
+      <span class="game__score--title"></span>
+      <span class="game__score--score"></span>
     </div>
   </footer>
 </section>

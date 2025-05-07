@@ -1,0 +1,65 @@
+<style>
+  .dialog-game-result {
+    width: 100%;
+    padding: 5.7rem 2.2rem;
+
+    h2 {
+      font-size: 2.4rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 1.5px;
+      margin-bottom: 2.6rem;
+    }
+
+    h3 {
+      font-size: 2.4rem;
+      font-weight: var(--fw-bold);
+      letter-spacing: 1.5px;
+      margin-bottom: 2.6rem;
+    }
+
+    .dialog-game-result--actions {
+      gap: 2rem;
+
+      button {
+        padding: 1rem;
+        font-size: 1.6rem;
+        font-weight: var(--fw-bold);
+        letter-spacing: 1px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      button:first-child {
+        flex: 0 0 200px;
+      }
+
+      button:last-child {
+        flex: 0 0 200px;
+      }
+    }
+  }
+</style>
+
+<div
+  id="dialog-game-result"
+  class="dialog-game-result"
+  aria-labelledby="dialog-game-result--title"
+>
+  <h2 id="dialog-game-result--sub-title">YOU WON!</h2>
+  <h3 id="dialog-game-result--title">RESTART GAME?</h3>
+  <div class="dialog-game-result--actions flex-row-center">
+    <button
+      class="button button--color-silver"
+      aria-label="Quit game and restart game"
+      data-answer="quit"
+    >
+      QUIT
+    </button>
+    <button
+      class="button button--color-orange"
+      aria-label="Next Round"
+      data-answer="next round"
+    >
+      NEXT ROUND
+    </button>
+  </div>
+</div>

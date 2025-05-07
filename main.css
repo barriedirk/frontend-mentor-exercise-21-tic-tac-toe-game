@@ -281,6 +281,10 @@ body {
   background-size: 60%;
 }
 
+.game__plays--button[disabled] {
+  opacity: 1;
+}
+
 .turn-x .game__plays--button:hover {
   background-image: url("./assets/icon-x-outline.svg");
 }
