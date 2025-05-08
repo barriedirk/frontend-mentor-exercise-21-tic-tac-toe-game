@@ -10,18 +10,23 @@ import {
 
 (async () => {
   const store = createStore(gameReducer);
+  let currentScreen = "";
 
   const renderScreen = async () => {
     const state = store.getState();
-    const { prevScreen, screen } = state;
+    const { screen } = state;
 
     if (screen === "") {
+      currentScreen = ScreenType.NEW_GAME;
+
       await NewGame({ idRoot, store });
 
       return;
     }
 
-    if (prevScreen === screen) return;
+    if (screen === currentScreen) return;
+
+    currentScreen = screen;
 
     if (screen === ScreenType.NEW_GAME) {
       await NewGame({ idRoot, store });

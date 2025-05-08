@@ -4,7 +4,6 @@ import {
   ScreenType,
   clearGameAction,
   changeToGameAction,
-  updatePrevScreenAction,
 } from "./reduxGame.js";
 import { DialogType, showDialog } from "./showDialog.js";
 
@@ -42,6 +41,4 @@ export async function NewGame({ idRoot, store }) {
       });
     }
   );
-
-  updatePrevScreenAction(store);
 }

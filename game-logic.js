@@ -1,6 +1,31 @@
-// 1. Easy AI (Random Move)
+export const WinnerMarker = Object.freeze({
+  X: "X",
+  O: "O",
+  TIE: "TIE",
+});
 
-function easyAIMove(board) {
+const winningCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+export const checkWinner = (board) => {
+  for (let [a, b, c] of winningCombos) {
+    if (board[a] && board[a] === board[b] && board[a] === board[c])
+      return board[a];
+  }
+
+  return board.includes("") ? null : WinnerMarker.TIE;
+};
+
+// Easy AI (Random Move)
+export const easyAIMove = (board) => {
   const emptyIndices = board
     .map((v, i) => (v === "" ? i : null))
     .filter((v) => v !== null);
@@ -9,25 +34,19 @@ function easyAIMove(board) {
     emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
 
   return randomIndex;
-}
+};
 
-// 2. Medium AI (Win or Block)
-function mediumAIMove(board, ai = "O", human = "X") {
-  const winningCombos = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
+// Medium AI (Win or Block)
+export const mediumAIMove = (
+  board,
+  ai = WinnerMarker.O,
+  human = WinnerMarker.X
+) => {
   // Try to win
   for (const combo of winningCombos) {
     const [a, b, c] = combo;
     const values = [board[a], board[b], board[c]];
+
     if (values.filter((v) => v === ai).length === 2 && values.includes("")) {
       return combo[values.indexOf("")];
     }
@@ -37,6 +56,7 @@ function mediumAIMove(board, ai = "O", human = "X") {
   for (const combo of winningCombos) {
     const [a, b, c] = combo;
     const values = [board[a], board[b], board[c]];
+
     if (values.filter((v) => v === human).length === 2 && values.includes("")) {
       return combo[values.indexOf("")];
     }
@@ -44,30 +64,17 @@ function mediumAIMove(board, ai = "O", human = "X") {
 
   // Pick random move
   return easyAIMove(board);
-}
+};
 
-// 3. Hard AI (Minimax - Unbeatable)
-function hardAIMove(board, ai = "O", human = "X") {
+// Hard AI (Minimax - Unbeatable)
+export const hardAIMove = (
+  board,
+  ai = WinnerMarker.O,
+  human = WinnerMarker.X
+) => {
   const availableSpots = board
     .map((v, i) => (v === "" ? i : null))
     .filter((v) => v !== null);
-
-  function checkWinner(b) {
-    const winPatterns = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let [a, b_, c] of winPatterns) {
-      if (b[a] && b[a] === b[b_] && b[a] === b[c]) return b[a];
-    }
-    return b.includes("") ? null : "tie";
-  }
 
   function minimax(newBoard, isMaximizing) {
     const result = checkWinner(newBoard);
@@ -115,15 +122,15 @@ function hardAIMove(board, ai = "O", human = "X") {
   }
 
   return minimax(board, true).index;
-}
+};
 
-// Usage Example
+// // Usage Example
 
-let board = ["", "", "", "", "", "", "", "", ""]; // initial empty board
+// let board = ["", "", "", "", "", "", "", "", ""]; // initial empty board
 
-// Human makes move at index 0
-board[0] = "X";
+// // Human makes move at index 0
+// board[0] = "X";
 
 // AI responds
-let aiMove = hardAIMove(board); // or mediumAIMove / easyAIMove
-board[aiMove] = "O";
+// let aiMove = hardAIMove(board); // or mediumAIMove / easyAIMove
+// board[aiMove] = "O";

@@ -34,7 +34,7 @@ export const GameActionType = Object.freeze({
   UPDATE_SCREEN: "UPDATE_SCREEN",
   TURN_ON: "TURN_ON",
   INCREASE_COUNT_WINNER: "INCREASE_COUNT_WINNER",
-  UPDATE_PREV_SCREEN: "UPDATE_PREV_SCREEN",
+  NEXT_ROUND: "NEXT_ROUND",
   INIT: "@@INIT",
 });
 
@@ -55,7 +55,6 @@ const initialState = {
     vs: "",
     aiDifficult: "",
   },
-  prevScreen: "",
   screen: "",
   boardGame: initialGameState,
 };
@@ -64,16 +63,9 @@ export const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case GameActionType.CLEAR_GAME: {
       const newState = structuredClone(state);
-      const { prevScreen, screen } = action?.payload ?? {};
+      const { screen } = action?.payload ?? {};
 
-      return { ...newState, prevScreen, screen };
-    }
-
-    case GameActionType.UPDATE_PREV_SCREEN: {
-      const newState = structuredClone(state);
-      const { screen } = newState;
-
-      return { ...newState, prevScreen: screen };
+      return { ...newState, screen };
     }
 
     case GameActionType.CHANGE_SCREEN: {
@@ -89,7 +81,6 @@ export const gameReducer = (state = initialState, action) => {
           aiDifficult,
         },
         screen,
-        prevScreen: "",
         boardGame,
       };
     }
@@ -101,7 +92,6 @@ export const gameReducer = (state = initialState, action) => {
       return {
         ...newState,
         screen,
-        prevScreen: screen,
       };
     }
 
@@ -154,6 +144,22 @@ export const gameReducer = (state = initialState, action) => {
       };
     }
 
+    case GameActionType.NEXT_ROUND: {
+      let newState = structuredClone(state);
+      let {
+        boardGame: { score },
+      } = newState;
+
+      return {
+        ...newState,
+        boardGame: {
+          turn: initialGameState.turn,
+          board: initialGameState.board,
+          score,
+        },
+      };
+    }
+
     default:
       return state;
   }
@@ -161,11 +167,10 @@ export const gameReducer = (state = initialState, action) => {
 
 /*  =ACTIONS---------------------- */
 
-export const clearGameAction = (store, { prevScreen, screen }) => {
+export const clearGameAction = (store, { screen }) => {
   store.dispatch({
     type: GameActionType.CLEAR_GAME,
     payload: {
-      prevScreen: prevScreen ?? "",
       screen: screen ?? "",
     },
   });
@@ -177,20 +182,20 @@ export const changeToNewGameAction = (store) => {
     payload: {
       playerMark: "",
       vs: "",
-      aiDifficul: "",
+      aiDifficult: "",
       screen: ScreenType.NEW_GAME,
       boardGame: initialGameState,
     },
   });
 };
 
-export const changeToGameAction = (store, { playerMark, vs, aiDifficul }) => {
+export const changeToGameAction = (store, { playerMark, vs, aiDifficult }) => {
   store.dispatch({
     type: GameActionType.CHANGE_SCREEN,
     payload: {
       playerMark,
       vs,
-      aiDifficul,
+      aiDifficult,
       screen: ScreenType.GAME,
       boardGame: initialGameState,
     },
@@ -221,12 +226,12 @@ export const turnOnGameAction = (store, { turn, idx }) => {
 export const increaseCountWinnerAction = (store, { winner }) => {
   store.dispatch({
     type: GameActionType.INCREASE_COUNT_WINNER,
-    payload: winner,
+    payload: { winner },
   });
 };
 
-export const updatePrevScreenAction = (store) => {
+export const nextRoundGameAction = (store) => {
   store.dispatch({
-    type: GameActionType.UPDATE_PREV_SCREEN,
+    type: GameActionType.NEXT_ROUND,
   });
 };

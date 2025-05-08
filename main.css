@@ -37,6 +37,18 @@
   border: none;
 }
 
+.color--orange {
+  color: var(--clr-light-yellow);
+}
+
+.color--blue {
+  color: var(--clr-light-blue);
+}
+
+.color--silver {
+  color: var(--clr-silver);
+}
+
 .button--color-orange {
   background-color: var(--clr-light-yellow);
   box-shadow: inset 0 -0.8rem 0 #cc8b13;

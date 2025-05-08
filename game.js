@@ -1,10 +1,18 @@
-import { $, $$, loadPartial, checkWinner } from "./utils.js";
+import { $, $$, loadPartial } from "./utils.js";
+
+import {
+  checkWinner,
+  easyAIMove,
+  mediumAIMove,
+  hardAIMove,
+} from "./game-logic.js";
+
 import { DialogType, showDialog } from "./showDialog.js";
 import {
   changeToNewGameAction,
   turnOnGameAction,
   increaseCountWinnerAction,
-  updatePrevScreenAction,
+  nextRoundGameAction,
 } from "./reduxGame.js";
 
 const FILE_HTML = "game.html";
@@ -24,7 +32,7 @@ const updateTurn = (store) => {
     turn === "X" ? "game__header-turn--o" : "game__header-turn--x";
 
   const classToAddBoard = turn === "X" ? "turn-x" : "turn-o";
-  const classToRemoveBoard = turn === "X" ? "turn-y" : "turn-o";
+  const classToRemoveBoard = turn === "X" ? "turn-o" : "turn-x";
 
   $span.classList.add(classToAdd);
   $span.classList.remove(classToRemove);
@@ -81,6 +89,13 @@ const updateBoard = (store) => {
   });
 };
 
+const updateGameScreen = (store) => {
+  updateScore(store);
+  updateTurn(store);
+  updateBoard(store);
+  verifyWinner(store);
+};
+
 const verifyWinner = async (store) => {
   const state = store.getState();
   const {
@@ -90,15 +105,35 @@ const verifyWinner = async (store) => {
 
   const winner = checkWinner(board);
 
-  console.log({ winner, board });
-
   if (winner) {
     const { playerMark, vs, rivalMark } = game;
 
     increaseCountWinnerAction(store, { winner });
     updateScore(store);
-    showDialog(DialogType.SHOW_WHO_WIN, { playerMark, rivalMark, winner });
+
+    const response = await showDialog(DialogType.SHOW_WHO_WIN, {
+      playerMark,
+      rivalMark,
+      winner,
+      vs,
+    });
+
+    if (response === "quit") {
+      changeToNewGameAction(store);
+    } else {
+      nextRoundGameAction(store);
+      updateGameScreen(store);
+    }
   }
+};
+
+const aiTurn = (store) => {
+  const { aiDifficult, playerMark, vs, rivalMark } = game;
+
+  if (vs !== "AI") return;
+  // EASY
+  // MEDIUM
+  // HARD
 };
 
 export async function Game({ idRoot, store }) {
@@ -116,14 +151,18 @@ export async function Game({ idRoot, store }) {
   $("#game__score--rival .game__score--title").innerHTML =
     vs === "AI" ? `${rivalMark} (CPU)` : `${rivalMark} (P2)`;
 
-  updateScore(store);
-  updateTurn(store);
-  updateBoard(store);
-  verifyWinner(store);
+  $("#game__score--you").classList.add(
+    playerMark === "X" ? "button--color-blue" : "button--color-orange"
+  );
+  $("#game__score--rival").classList.add(
+    playerMark === "X" ? "button--color-orange" : "button--color-blue"
+  );
+
+  updateGameScreen(store);
 
   $$(".game__plays--button").forEach(($button, idx) => {
-    const row = Math.floor(idx / 3) + 1;
-    const column = (idx % 3) + 1;
+    // const row = Math.floor(idx / 3) + 1;
+    // const column = (idx % 3) + 1;
 
     $button.addEventListener("click", async (evt) => {
       evt.preventDefault();
@@ -134,6 +173,7 @@ export async function Game({ idRoot, store }) {
       } = state;
 
       turnOnGameAction(store, { idx, turn });
+      updateTurn(store);
       updateBoard(store);
       verifyWinner(store);
     });
@@ -148,6 +188,4 @@ export async function Game({ idRoot, store }) {
       changeToNewGameAction(store);
     }
   });
-
-  updatePrevScreenAction(store);
 }

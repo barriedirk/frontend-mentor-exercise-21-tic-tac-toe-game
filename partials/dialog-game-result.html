@@ -4,17 +4,26 @@
     padding: 5.7rem 2.2rem;
 
     h2 {
-      font-size: 2.4rem;
+      font-size: 1.4rem;
       font-weight: var(--fw-bold);
-      letter-spacing: 1.5px;
-      margin-bottom: 2.6rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.88px;
     }
 
     h3 {
       font-size: 2.4rem;
       font-weight: var(--fw-bold);
       letter-spacing: 1.5px;
-      margin-bottom: 2.6rem;
+      margin-bottom: 2.2rem;
+      gap: 1rem;
+      line-height: 1;
+      white-space: nowrap;
+
+      img {
+        width: 2.8rem;
+        aspect-ratio: 1 / 1;
+        display: inline-block;
+      }
     }
 
     .dialog-game-result--actions {
@@ -29,11 +38,11 @@
       }
 
       button:first-child {
-        flex: 0 0 200px;
+        flex: 0 0 7.6rem;
       }
 
       button:last-child {
-        flex: 0 0 200px;
+        flex: 0 0 14.6rem;
       }
     }
   }
@@ -44,8 +53,40 @@
   class="dialog-game-result"
   aria-labelledby="dialog-game-result--title"
 >
-  <h2 id="dialog-game-result--sub-title">YOU WON!</h2>
-  <h3 id="dialog-game-result--title">RESTART GAME?</h3>
+  <h2 id="dialog-game-result--sub-title" style="display: none">YOU WON!</h2>
+
+  <h3
+    id="dialog-game-result--title-o"
+    style="display: none"
+    class="dialog-game-result--title color--orange flex-row-center"
+  >
+    <img
+      class="dialog-game-result--img dialog-game-result--img-o"
+      src="./assets/icon-o.svg"
+    />
+    TAKES THE ROUND
+  </h3>
+
+  <h3
+    id="dialog-game-result--title-x"
+    style="display: none"
+    class="dialog-game-result--title color--blue flex-row-center"
+  >
+    <img
+      class="dialog-game-result--img dialog-game-result--img-x"
+      src="./assets/icon-x.svg"
+    />
+    TAKES THE ROUND
+  </h3>
+
+  <h3
+    id="dialog-game-result--title-tie"
+    style="display: none"
+    class="dialog-game-result--title color--silver flex-row-center"
+  >
+    ROUND TIED
+  </h3>
+
   <div class="dialog-game-result--actions flex-row-center">
     <button
       class="button button--color-silver"
