@@ -1,4 +1,4 @@
-import { $, idRoot } from "./utils.js";
+import { $, idRoot, setStateToLocalStorage } from "./utils.js";
 import { NewGame } from "./new-game.js";
 import { Game } from "./game.js";
 import {
@@ -37,7 +37,14 @@ import {
     }
   };
 
+  const saveDataInLocalStorage = async () => {
+    const state = store.getState();
+
+    setStateToLocalStorage(state);
+  };
+
   store.subscribe(renderScreen);
+  store.subscribe(saveDataInLocalStorage);
 
   initGameAction(store);
 

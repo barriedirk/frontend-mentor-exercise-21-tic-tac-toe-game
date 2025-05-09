@@ -72,10 +72,6 @@ export const hardAIMove = (
   ai = WinnerMarker.O,
   human = WinnerMarker.X
 ) => {
-  const availableSpots = board
-    .map((v, i) => (v === "" ? i : null))
-    .filter((v) => v !== null);
-
   function minimax(newBoard, isMaximizing) {
     const result = checkWinner(newBoard);
     if (result !== null) {
@@ -123,14 +119,3 @@ export const hardAIMove = (
 
   return minimax(board, true).index;
 };
-
-// // Usage Example
-
-// let board = ["", "", "", "", "", "", "", "", ""]; // initial empty board
-
-// // Human makes move at index 0
-// board[0] = "X";
-
-// AI responds
-// let aiMove = hardAIMove(board); // or mediumAIMove / easyAIMove
-// board[aiMove] = "O";

@@ -1,3 +1,5 @@
+import { getStateFromLocalStorage } from "./utils.js";
+
 export const createStore = (reducer) => {
   let state;
   let listeners = [];
@@ -157,6 +159,14 @@ export const gameReducer = (state = initialState, action) => {
           board: initialGameState.board,
           score,
         },
+      };
+    }
+
+    case GameActionType.INIT: {
+      let newState = getStateFromLocalStorage() ?? structuredClone(state);
+
+      return {
+        ...newState,
       };
     }
 

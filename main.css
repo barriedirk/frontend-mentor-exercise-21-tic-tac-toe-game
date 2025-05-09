@@ -138,6 +138,16 @@ body {
 .new-game {
   max-width: 32.7rem;
   width: 100%;
+  opacity: 0.1;
+  transform: translateY(-4rem);
+  animation: newGameFadeInUp 0.2s ease-out 0.3s forwards;
+}
+
+@keyframes newGameFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .new-game__header {
@@ -220,6 +230,16 @@ body {
 .game {
   max-width: 32.7rem;
   width: 100%;
+  opacity: 0.2;
+  transform: translateY(20px);
+  animation: gameFadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes gameFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .game__header {
@@ -359,13 +379,50 @@ dialog.modal-dialog {
 
   width: 100%;
   max-width: 620px;
-  /* height: 100%; */
   max-height: 750px;
   margin: auto;
+
+  opacity: 0.1;
+  transform: translateY(-5rem);
+  animation: dialogFadeInUp 0.1s ease-out 0.2s forwards;
+}
+
+@keyframes dialogFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.thinking-robot {
+  position: fixed;
+  inset: 0;
+  background-color: var(--clr-dark-navy);
+  z-index: 9999;
+  display: none;
+  opacity: 0.1;
+  animation: thinkingRobotFadeInUp 0.1s ease-out 0.2s forwards;
+}
+
+@keyframes thinkingRobotFadeInUp {
+  to {
+    opacity: 0.6;
+  }
+}
+
+.thinking-robot--show {
+  display: flex;
+}
+
+.thinking-robot--image {
+  width: 100%;
+  height: auto;
+  max-width: 30rem;
+  padding: 2rem;
 }
 
 /* =Media Queries -----*/

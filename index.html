@@ -45,10 +45,16 @@
       rel="stylesheet"
     />
 
+    <!--
     <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./main.css" /> 
+    -->
+    <link rel="stylesheet" href="./bundle.css" />
 
-    <script type="module" src="./main.js"></script>
+    <!-- 
+    <script type="module" src="./main.js"></script> 
+    -->
+    <script type="module" src="./bundle.js"></script>
 
     <link
       rel="icon"
@@ -68,5 +74,17 @@
     <dialog id="modal-dialog" class="modal-dialog">
       <p>Lorem Ipsum</p>
     </dialog>
+
+    <div
+      id="thinking-robot"
+      class="thinking-robot flex-column-center"
+      aria-hidden="true"
+    >
+      <img
+        src="./assets/thinking-robot.png"
+        class="thinking-robot--image"
+        alt="Thinking Robot"
+      />
+    </div>
   </body>
 </html>

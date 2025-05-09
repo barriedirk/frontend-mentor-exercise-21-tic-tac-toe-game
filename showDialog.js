@@ -11,7 +11,7 @@ const idRoot = "#modal-dialog";
 const $dialog = $(idRoot);
 
 const dialogChoice = {
-  [DialogType.SHOW_WHO_WIN]: async ({ playerMark, rivalMark, vs, winner }) => {
+  [DialogType.SHOW_WHO_WIN]: async ({ playerMark, vs, winner }) => {
     await loadPartial(idRoot, "dialog-game-result.html");
 
     $(`#dialog-game-result--title-${winner.toLowerCase()}`).style.display =
@@ -25,8 +25,6 @@ const dialogChoice = {
           vs === "AI" ? "OH NO, YOU LOST..." : "PLAYER 2 WINS!";
       } else {
         $subTitle.textContent = vs === "AI" ? "YOU WON!" : "PLAYER 1 WINS!";
-
-        $subTitle.textContent = "PLAYER 1 WINS!";
       }
 
       $subTitle.style.display = "inline-block";

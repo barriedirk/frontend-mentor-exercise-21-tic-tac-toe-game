@@ -111,6 +111,8 @@ const verifyWinner = async (store) => {
     increaseCountWinnerAction(store, { winner });
     updateScore(store);
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     const response = await showDialog(DialogType.SHOW_WHO_WIN, {
       playerMark,
       rivalMark,
@@ -123,28 +125,59 @@ const verifyWinner = async (store) => {
     } else {
       nextRoundGameAction(store);
       updateGameScreen(store);
+      aiTurn(store);
     }
   }
 };
 
-const aiTurn = (store) => {
+const aiTurn = async (store) => {
+  const state = store.getState();
+  const { boardGame, game } = state;
   const { aiDifficult, playerMark, vs, rivalMark } = game;
+  const { turn, board } = boardGame;
 
   if (vs !== "AI") return;
-  // EASY
-  // MEDIUM
-  // HARD
+  if (turn !== rivalMark) return;
+
+  const winner = checkWinner(board);
+
+  if (winner) return;
+
+  const $thinkingRobot = $("#thinking-robot");
+
+  $thinkingRobot.classList.add("thinking-robot--show");
+
+  let aiMove = null;
+  switch (aiDifficult) {
+    case "EASY":
+      aiMove = easyAIMove(board);
+      break;
+
+    case "MEDIUM":
+      aiMove = mediumAIMove(board, rivalMark, playerMark);
+      break;
+
+    case "HARD":
+      aiMove = hardAIMove(board, rivalMark, playerMark);
+      break;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  if (aiMove !== null) {
+    turnOnGameAction(store, { idx: aiMove, turn });
+    updateGameScreen(store);
+  }
+
+  $thinkingRobot.classList.remove("thinking-robot--show");
 };
 
 export async function Game({ idRoot, store }) {
   const state = store.getState();
-  const { boardGame, game } = state;
-  const { aiDifficult, playerMark, vs, rivalMark } = game;
+  const { game } = state;
+  const { playerMark, vs, rivalMark } = game;
 
   await loadPartial(idRoot, FILE_HTML);
-
-  console.log({ boardGame, game });
-  console.log({ aiDifficult, playerMark, rivalMark, vs });
 
   $("#game__score--you .game__score--title").innerHTML =
     vs === "AI" ? `${playerMark} (YOU)` : `${playerMark} (P1)`;
@@ -159,6 +192,7 @@ export async function Game({ idRoot, store }) {
   );
 
   updateGameScreen(store);
+  aiTurn(store);
 
   $$(".game__plays--button").forEach(($button, idx) => {
     // const row = Math.floor(idx / 3) + 1;
@@ -176,6 +210,7 @@ export async function Game({ idRoot, store }) {
       updateTurn(store);
       updateBoard(store);
       verifyWinner(store);
+      aiTurn(store);
     });
   });
 
