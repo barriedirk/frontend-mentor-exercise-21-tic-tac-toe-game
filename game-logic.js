@@ -67,11 +67,17 @@ export const mediumAIMove = (
 };
 
 // Hard AI (Minimax - Unbeatable)
+// ✅ Key Concepts
+// Minimax Algorithm: A decision rule used for minimizing the possible loss in a worst-case scenario. In games like Tic-Tac-Toe, it's used to explore all possible future moves.
+// Maximizing Player (AI): Tries to get the highest score (+1).
+// Minimizing Player (Human): Tries to get the lowest score (–1).
 export const hardAIMove = (
   board,
   ai = WinnerMarker.O,
   human = WinnerMarker.X
 ) => {
+  // This function recursively simulates all future moves.
+  // isMaximizing: If it's AI's turn (true), try to maximize score. Otherwise, minimize.
   function minimax(newBoard, isMaximizing) {
     const result = checkWinner(newBoard);
     if (result !== null) {
